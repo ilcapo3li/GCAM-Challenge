@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
+use App\Enums\UserType;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -21,6 +25,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'type_id'
     ];
 
     /**
@@ -42,4 +47,36 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function type(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => UserType::from($this->type_id),
+        );
+    }
+
+    public function boards(): HasMany
+    {
+        return $this->hasMany(Board::class, 'created_by');
+    }
+
+    public function createdTasks(): HasMany
+    {
+        return $this->hasMany(BoardItems::class, 'created_by');
+    }
+
+    public function assignedTasks(): BelongsToMany
+    {
+        return $this->belongsToMany(BoardItems::class, 'assignee_board_items');
+    }
+
+    public function attachedBoards(): BelongsToMany
+    {
+        return $this->belongsToMany(Board::class, 'board_users');
+    }
+
+    public function invitedUsers(): BelongsToMany
+    {
+        return $this->belongsToMany(InviteUser::class, 'created_by');
+    }
 }
