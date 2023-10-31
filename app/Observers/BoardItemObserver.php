@@ -18,7 +18,7 @@ class BoardItemObserver
         Log::build([
             'driver' => 'single',
             'path' => storage_path('logs/created.log'),
-        ])->info('Issue :code created', ['code' => $boardItem->code]);
+        ])->info(__('Issue :code created', ['code' => $boardItem->code]));
     }
 
     /**
