@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\User;
+use App\Models\Board;
+use App\Models\BoardItem;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,11 +16,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        User::factory()->admin();
+        User::factory(20)
+            ->has(Board::factory()->count(3)
+                ->has(BoardItem::factory()->count(10)
+                ->state(function (array $attributes, Board $board) {
+                    return [
+                        'board_id' => $board->id,
+                        'created_by' => $board->created_by,
+                    ];
+                }), 'boardItems'),
+            'boards')->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }
