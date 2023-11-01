@@ -9,8 +9,6 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                 <diV class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                    
-
                     <!-- project list -->
                     <div class="relative pt-5">
                         <div class="h-full grid justify-items-center -mx-2">
