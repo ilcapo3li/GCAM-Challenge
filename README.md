@@ -181,4 +181,7 @@ class BoardItemObserver
 
 * https://github.com/ilcapo3li/GCAM-Challenge/pull/7
 
+
+### https://github.com/ilcapo3li/GCAM-Challenge/issues
+
 ***All the best***
