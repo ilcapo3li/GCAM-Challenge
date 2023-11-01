@@ -18,13 +18,14 @@ class Board extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'code',
         'title',
         'created_by',
     ];
 
     public function boardItems(): HasMany
     {
-        return $this->hasMany(BoardItem::class,'parent_id');
+        return $this->hasMany(BoardItem::class,'board_id');
     }
 
     public function createdBy(): BelongsTo

@@ -45,4 +45,24 @@ class BoardItemFactory extends Factory
             'type_id' => TaskType::SUB_TASK->value,
         ]);
     }
+
+    /**
+     * Indicate that the model's issue type should be epic.
+     */
+    public function todo(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'status_id' => Status::TODO->value,
+        ]);
+    }
+
+    /**
+     * Indicate that the model's issue type should be sub task.
+     */
+    public function completed(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'status_id' => Status::COMPLETED->value,
+        ]);
+    }
 }

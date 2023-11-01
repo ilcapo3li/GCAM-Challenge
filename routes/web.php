@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use App\Http\Controllers\BoardController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BoardItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +35,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::prefix('/boards')->group(function () {
+        Route::get('/', [BoardController::class, 'index'])->name('board.index');
+        Route::post('/', [BoardController::class, 'store'])->name('board.store');
+        Route::get('/{board}/todo', [BoardController::class, 'details'])->name('board.todo');
+        Route::get('/{board}/scrum', [BoardController::class, 'scrum'])->name('board.scrum');
+        Route::post('/{board}/create-task', [BoardItemController::class, 'store'])->name('boardItem.store');
+    });
 });
 
 require __DIR__.'/auth.php';

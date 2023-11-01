@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Enums\Status;
 use App\Models\User;
 use App\Models\Board;
 use App\Models\BoardItem;
@@ -18,11 +19,16 @@ class DatabaseSeeder extends Seeder
     {
         User::factory()->admin();
         User::factory(20)
-            ->has(Board::factory()->count(3)
-                ->has(BoardItem::factory()->count(10)
+            ->has(Board::factory()->count(10)
+                ->has(BoardItem::factory()->todo()->count(15)
                 ->state(function (array $attributes, Board $board) {
                     return [
-                        'board_id' => $board->id,
+                        'created_by' => $board->created_by,
+                    ];
+                }), 'boardItems')
+                ->has(BoardItem::factory()->completed()->count(20)
+                ->state(function (array $attributes, Board $board) {
+                    return [
                         'created_by' => $board->created_by,
                     ];
                 }), 'boardItems'),
