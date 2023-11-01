@@ -9,26 +9,7 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                 <diV class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                    <div>
-                        <button type="button" class="btn btn-primary flex" @click="addEditProject()">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24px"
-                                height="24px"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="w-5 h-5 ltr:mr-3 rtl:ml-3"
-                            >
-                                <line x1="12" y1="5" x2="12" y2="19"></line>
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                            </svg>
-                            Add Project
-                        </button>
-                    </div>
+                    
 
                     <!-- project list -->
                     <div class="relative pt-5">
