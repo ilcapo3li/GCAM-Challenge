@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('boards', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
             $table->string('title');
             $table->foreignId('created_by')->constrained('users');
             $table->timestamps();

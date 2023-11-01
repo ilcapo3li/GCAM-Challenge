@@ -21,6 +21,7 @@ class BoardItem extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'code',
         'title',
         'board_id',
         'status_id',

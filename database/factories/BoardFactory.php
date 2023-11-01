@@ -17,6 +17,7 @@ class BoardFactory extends Factory
     public function definition(): array
     {
         return [
+            'code' => now()->micro,
             'title' => fake()->company(),
         ];
     }
