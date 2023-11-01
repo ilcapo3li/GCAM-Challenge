@@ -69,12 +69,13 @@ docker run --rm \
 ```
 
 ### 2. Services
-*PGsql Database
+*Pgsql Database
 *Redis
 *Meillisearch
 *Adminer
 *SailApp
 *Mailpit
+![Alt text](image.png)
 
 ### 3. Challange TODO ARCH
 
@@ -158,6 +159,17 @@ class BoardItemObserver
     }
 }
 ```
+
+### 5. TODO Vue Components
+
+* Register/Login Breaze.
+![Alt text](image-1.png)
+* Boards Vue Datatable List.
+![Alt text](image-2.png)
+* Todo Dashboard.
+![Alt text](image-3.png)
+* Scrum Board #WIP
+![Alt text](image-4.png)
 
 ### 5. Issues
 
